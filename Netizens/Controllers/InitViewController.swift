@@ -10,9 +10,11 @@ import UIKit
 
 class InitViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
+    private let listSegue = "ListSegue"
         
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        performSegue(withIdentifier: listSegue, sender: nil)
     }
 }

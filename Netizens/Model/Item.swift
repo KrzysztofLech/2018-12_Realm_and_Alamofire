@@ -1,5 +1,5 @@
 //
-//  PhotoItem.swift
+//  Item.swift
 //  Netizens
 //
 //  Created by Krzysztof Lech on 08/12/2018.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct PhotoItem: Codable {
+struct Item: Codable {
     let title: String
     let thumbnailUrl: String
 }
