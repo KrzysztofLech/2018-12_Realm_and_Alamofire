@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  InitViewController.swift
 //  Netizens
 //
 //  Created by Krzysztof Lech on 08/12/2018.
@@ -8,13 +8,11 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class InitViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+
+        
     }
-
-
 }
-
