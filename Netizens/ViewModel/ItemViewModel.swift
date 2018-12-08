@@ -15,6 +15,7 @@ class ItemsViewModel {
     // MARK: - Private Properties
     
     private let apiService: APIServiceProtocool
+    private let alertService: AlertService
     private var items: [Item] = []
     
     // MARK: - Public Properties
@@ -23,8 +24,9 @@ class ItemsViewModel {
     
     // MARK: - Init
     
-    init(apiService: APIServiceProtocool = APIService()) {
+    init(apiService: APIServiceProtocool = APIService(), alertService: AlertService = AlertService()) {
         self.apiService = apiService
+        self.alertService = alertService
     }
     
     // MARK: - Networking
@@ -37,7 +39,11 @@ class ItemsViewModel {
                 DispatchQueue.main.async { successCompletion() }
                 
             case .failure(let error):
-                print(error)
+                DispatchQueue.main.async {
+                    self?.alertService.showAlert(withError: error, noInternetAction: {
+                        self?.initFetch(successCompletion: successCompletion)
+                    })
+                }
             }
         }
     }
