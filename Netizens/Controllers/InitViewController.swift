@@ -9,12 +9,18 @@
 import UIKit
 
 class InitViewController: UIViewController {
-
+    
+    @IBOutlet private weak var logoImageView: UIImageView!
+    
     private let listSegue = "ListSegue"
         
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        performSegue(withIdentifier: listSegue, sender: nil)
+        UIView.animate(withDuration: 0.5, delay: 0.0, options: .curveEaseIn, animations: {
+            self.logoImageView.alpha = 0.0
+        }) { (_) in
+            self.performSegue(withIdentifier: self.listSegue, sender: nil)
+        }
     }
 }

@@ -17,10 +17,21 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_netizens_big" translatesAutoresizingMaskIntoConstraints="NO" id="WqB-z6-bgj">
+                                <rect key="frame" x="69" y="305.5" width="276" height="285"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.015686274510000001" blue="0.1176470588" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="WqB-z6-bgj" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="1VP-35-bEp"/>
+                            <constraint firstItem="WqB-z6-bgj" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="kjw-wL-y1b"/>
+                            <constraint firstItem="WqB-z6-bgj" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="2:3" id="pWD-Fd-4uC"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="logoImageView" destination="WqB-z6-bgj" id="If2-Mh-AFL"/>
                         <segue destination="VBK-jr-hUE" kind="show" identifier="ListSegue" id="qLj-YO-zir"/>
                     </connections>
                 </viewController>
@@ -31,7 +42,7 @@
         <!--List View Controller-->
         <scene sceneID="8Z0-ql-0Sb">
             <objects>
-                <viewController id="VBK-jr-hUE" customClass="ListViewController" customModule="Netizens" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalTransitionStyle="crossDissolve" id="VBK-jr-hUE" customClass="ListViewController" customModule="Netizens" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uI3-uD-BQ2">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -120,4 +131,7 @@
             <point key="canvasLocation" x="1481" y="7"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="logo_netizens_big" width="562.5" height="285.75"/>
+    </resources>
 </document>
