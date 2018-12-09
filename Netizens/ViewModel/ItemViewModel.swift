@@ -14,7 +14,7 @@ class ItemsViewModel {
     
     // MARK: - Private Properties
     
-    private let apiService: APIServiceProtocool
+    private let apiService: APIServiceProtocol
     private let alertService: AlertService
     private var items: [Item] = []
     
@@ -24,7 +24,7 @@ class ItemsViewModel {
     
     // MARK: - Init
     
-    init(apiService: APIServiceProtocool = APIService(), alertService: AlertService = AlertService()) {
+    init(apiService: APIServiceProtocol = APIService(), alertService: AlertService = AlertService()) {
         self.apiService = apiService
         self.alertService = alertService
     }

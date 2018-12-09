@@ -8,11 +8,11 @@
 
 import Foundation
 
-protocol APIServiceProtocool {
+protocol APIServiceProtocol {
     func fetchData(url: String, completion: @escaping (Result<Data, ErrorResult>) -> Void)
 }
 
-class APIService: APIServiceProtocool {
+class APIService: APIServiceProtocol {
     
     func fetchData(url: String, completion: @escaping (Result<Data, ErrorResult>) -> Void) {
         guard let endPointUrl = URL(string: url) else {
