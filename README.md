@@ -12,6 +12,7 @@ Napisz aplikację wykorzystując wzorzec **MVVM**, która:
 * wyświetli wyniki w formie UITableView, gdzie poszczególne komórki automatycznie dopasowują wysokość do tekstu 'title'
 
 <br> 
+
 ## Dodatkowo dodano:
 
 * obsługę błędów API w formie alertów
