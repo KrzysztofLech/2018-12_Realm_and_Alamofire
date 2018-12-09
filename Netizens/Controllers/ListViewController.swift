@@ -18,6 +18,7 @@ class ListViewController: UIViewController {
     
     // MARK: - Private Properties
     
+    private let detailSegue = "DetailSegue"
     private let viewModel = ItemsViewModel()
     
     //MARK: - Life Cycles Methods
@@ -53,6 +54,12 @@ class ListViewController: UIViewController {
             self?.tableView.reloadData()
         }
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? DetailViewController, let index = sender as? Int {
+            vc.item = viewModel.getItemData(withIndex: index)
+        }
+    }
 }
 
 // MARK: - Table View Data Souce Methods
@@ -78,5 +85,24 @@ extension ListViewController: UITableViewDataSource {
         }
         
         return cell
+    }
+    
+    // cells animation
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let width = UIScreen.main.bounds.width
+        let offset: CGFloat = indexPath.row%2 == 0 ? width : -width
+        let transform = CATransform3DTranslate(CATransform3DIdentity, offset, 0, 0)
+        cell.layer.transform = transform
+        
+        UIView.animate(withDuration: 0.3, animations: { cell.layer.transform = CATransform3DIdentity })
+    }
+}
+
+// MARK: - Table View Delegate Method
+
+extension ListViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: detailSegue, sender: indexPath.row)
     }
 }
