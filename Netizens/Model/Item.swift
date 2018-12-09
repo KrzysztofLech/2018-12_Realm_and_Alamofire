@@ -7,8 +7,23 @@
 //
 
 import Foundation
+import RealmSwift
 
-struct Item: Codable {
-    let title: String
-    let thumbnailUrl: String
+class Item: Object, Decodable {
+    
+    @objc dynamic var title: String = ""
+    @objc dynamic var thumbnailUrl: String = ""
+    
+    private enum ItemCodingKeys: String, CodingKey {
+        case title
+        case thumbnailUrl
+    }
+    
+    convenience required init(from decoder: Decoder) throws {
+        self.init()
+        let container = try decoder.container(keyedBy: ItemCodingKeys.self)
+        
+        title = try container.decode(String.self, forKey: .title)
+        thumbnailUrl = try container.decode(String.self, forKey: .thumbnailUrl)
+    }
 }

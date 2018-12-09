@@ -10,6 +10,7 @@ import Foundation
 
 protocol APIServiceProtocol {
     func fetchData(url: String, completion: @escaping (Result<Data, ErrorResult>) -> Void)
+    func processFetchedData(_ data: Data) -> [Item]
 }
 
 class APIService: APIServiceProtocol {
@@ -42,5 +43,15 @@ class APIService: APIServiceProtocol {
             
             completion(.success(data))
             }.resume()
+    }
+    
+    func processFetchedData(_ data: Data) -> [Item] {
+        do {
+            let items = try JSONDecoder().decode([Item].self, from: data)
+            return items
+        } catch {
+            print(error)
+            return []
+        }
     }
 }

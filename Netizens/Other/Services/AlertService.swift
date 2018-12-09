@@ -25,16 +25,14 @@ struct AlertService {
         guard let controller = UIApplication.getPresentedViewController() else { return }
         
         let ac = UIAlertController(title: "No Internet!",
-                                   message: "Check your network and try again.",
+                                   message: "Presented data was fetched from local data base!!!",
                                    preferredStyle: .alert)
-        let action = UIAlertAction(title: "Try again", style: .default) { _ in
-            action()}
-        ac.addAction(action)
-        
         let okAction = UIAlertAction(title: "OK", style: .default)
         ac.addAction(okAction)
-        
-        controller.present(ac, animated: true, completion: nil)
+
+        controller.present(ac, animated: true, completion: {
+            action()
+        })
     }
     
     private func showAlert(withTitle title: String) {
@@ -43,7 +41,7 @@ struct AlertService {
         let ac = UIAlertController(title: title,
                                    message: nil,
                                    preferredStyle: .alert)
-        let action = UIAlertAction(title: "OK", style: .default) {_ in }
+        let action = UIAlertAction(title: "OK", style: .default)
         ac.addAction(action)
         controller.present(ac, animated: true, completion: nil)
     }
