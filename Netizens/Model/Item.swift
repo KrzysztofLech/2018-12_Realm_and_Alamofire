@@ -12,10 +12,12 @@ import RealmSwift
 class Item: Object, Decodable {
     
     @objc dynamic var title: String = ""
+    @objc dynamic var url: String = ""
     @objc dynamic var thumbnailUrl: String = ""
     
     private enum ItemCodingKeys: String, CodingKey {
         case title
+        case url
         case thumbnailUrl
     }
     
@@ -24,6 +26,7 @@ class Item: Object, Decodable {
         let container = try decoder.container(keyedBy: ItemCodingKeys.self)
         
         title = try container.decode(String.self, forKey: .title)
+        url = try container.decode(String.self, forKey: .url)
         thumbnailUrl = try container.decode(String.self, forKey: .thumbnailUrl)
     }
 }
